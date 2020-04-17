@@ -30,6 +30,18 @@ public class ItemController {
 		return "redirect:/product/displayall";
 	}
 	
+	@RequestMapping("/edit/{itemid}")
+	public String edit(@PathVariable("itemid") String itemid, ModelMap map) {
+		map.addAttribute("i", itemService.getItemById(UUID.fromString(itemid)));
+		return "additem";
+	}
+	
+	@RequestMapping(value={"/update"}, method=RequestMethod.POST)
+	public String edit(@ModelAttribute("i") Item item) {
+		itemService.updateItem(item);
+		return "redirect:/product/displayall";
+	}
+	
 	@RequestMapping("/displayall")
 	public String displayAll(ModelMap map) {
 		map.addAttribute("itemlist", itemService.getItemList());

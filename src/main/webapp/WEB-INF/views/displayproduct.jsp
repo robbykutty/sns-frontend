@@ -52,14 +52,15 @@
 						</h5>
 						<div class="action">
 							<jstl-core:if test="${item.itemPrice>0}">
-								<button class="add-to-cart btn btn-warning" type="button">Add to Cart</button>
-								<button class="add-to-cart btn btn-primary" type="button">Buy Now</button>
+								<a href="${pageContext.request.contextPath}/order/addtocart/${item.itemid}"><button class="add-to-cart btn btn-warning" type="button">Add to Cart</button></a>
+								<a href="${pageContext.request.contextPath}/order/buynow/${item.itemid}"><button class="add-to-cart btn btn-primary" type="button">Buy Now</button></a>
 							</jstl-core:if>
+							<a href="${pageContext.request.contextPath}/product/edit/${item.itemid}"><button class="add-to-cart btn btn-warning" type="button">Edit</button></a>
 							<a href="${pageContext.request.contextPath}/product/delete/${item.itemid}"><button class="add-to-cart btn btn-danger" type="button">Delete</button></a>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>s
 		</div>
 	</div>
 
