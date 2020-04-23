@@ -1,6 +1,7 @@
 <jsp:include page="header.jsp"/>
 <%@ taglib prefix="sp-tags" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="jstl-core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sp-sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page isELIgnored="false" %>
 <html>
 <head>
@@ -52,11 +53,16 @@
 						</h5>
 						<div class="action">
 							<jstl-core:if test="${item.itemPrice>0}">
-								<a href="${pageContext.request.contextPath}/order/addtocart/${item.itemid}"><button class="add-to-cart btn btn-warning" type="button">Add to Cart</button></a>
-								<a href="${pageContext.request.contextPath}/order/buynow/${item.itemid}"><button class="add-to-cart btn btn-primary" type="button">Buy Now</button></a>
+								<sp-sec:authorize access="isAuthenticated() and hasAuthority('BUYER')">
+									<a href="${pageContext.request.contextPath}/order/addtocart/${item.itemid}"><button class="add-to-cart btn btn-warning" type="button">Add to Cart</button></a>
+									<a href="${pageContext.request.contextPath}/order/buynow/${item.itemid}"><button class="add-to-cart btn btn-primary" type="button">Buy Now</button></a>
+								</sp-sec:authorize>
 							</jstl-core:if>
-							<a href="${pageContext.request.contextPath}/product/edit/${item.itemid}"><button class="add-to-cart btn btn-warning" type="button">Edit</button></a>
-							<a href="${pageContext.request.contextPath}/product/delete/${item.itemid}"><button class="add-to-cart btn btn-danger" type="button">Delete</button></a>
+							
+							<sp-sec:authorize access="isAuthenticated() and hasAuthority('SELLER')">
+								<a href="${pageContext.request.contextPath}/product/edit/${item.itemid}"><button class="add-to-cart btn btn-warning" type="button">Edit</button></a>
+								<a href="${pageContext.request.contextPath}/product/delete/${item.itemid}"><button class="add-to-cart btn btn-danger" type="button">Delete</button></a>
+							</sp-sec:authorize>
 						</div>
 					</div>
 				</div>

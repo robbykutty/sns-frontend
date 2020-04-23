@@ -14,6 +14,7 @@
 			<sp-form:form modelAttribute="item" 
 			 method="post"
 			 action="${pageContext.request.contextPath}/product/add" 
+			 enctype="multipart/form-data" 
 			 cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 customclass">
 			<h2>Add Product</h2>
 			<div class="form-group">
@@ -31,6 +32,10 @@
 			<div class="form-group">
 				<label>Product Quantity</label>
 				<sp-form:input path="itemsOnStock" cssClass="form-control"/>
+			</div>			
+			<div class="form-group">
+				<label>Select Product Image</label>
+				<input type="file" name="image" accept="image/*"/>
 			</div>
 			<div class="form-group">
 				<input type="reset" value="Reset" class="btn btn-danger btn-block"/>
@@ -44,7 +49,7 @@
 	<jstl-core:if test="${i!=null}">
 		<div class="container">
 			<sp-form:form modelAttribute="i" 
-			 method="post"
+			 method="post" 
 			 action="${pageContext.request.contextPath}/product/update" 
 			 cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 customclass">
 			<h2>Update Product</h2>
@@ -70,6 +75,7 @@
 				<label>Product Quantity</label>
 				<sp-form:input path="itemsOnStock" cssClass="form-control"/>
 			</div>
+			
 			<div class="form-group">
 				<input type="reset" value="Reset" class="btn btn-danger btn-block"/>
 				<input type="submit" value="Update" class="btn btn-primary btn-block"/>
