@@ -129,4 +129,22 @@ public class ItemController {
 		itemService.removeItem(itemid);
 		return "redirect:/product/displayall";
 	}
+	
+	@RequestMapping("/lowtohigh")
+	public String lowToHigh(ModelMap map) {
+		map.addAttribute("itemlist", itemService.getItemListbyPrice("asc"));
+		return "displayallproducts";
+	}
+	
+	@RequestMapping("/hightolow")
+	public String highToLow(ModelMap map) {
+		map.addAttribute("itemlist", itemService.getItemListbyPrice("desc"));
+		return "displayallproducts";
+	}
+	
+	@RequestMapping("/search")
+	public String search(@RequestParam("search") String searchtext, ModelMap map) {
+		map.addAttribute("itemlist", itemService.getItemBySearch(searchtext));
+		return "displayallproducts";
+	}	
 }

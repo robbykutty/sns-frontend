@@ -54,8 +54,14 @@
 			  </div>
 			</li>
 		</ul>
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		
+		<div>
+		<a class="btn btn-warning text-white" href="${pageContext.request.contextPath}/product/lowtohigh">Low To High</a>
+		<a class="btn btn-warning text-white" href="${pageContext.request.contextPath}/product/hightolow">High To Low</a>
+		</div>
+		
+		<form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/product/search" method="post">
+			<input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 		</form>
 	 </div>
